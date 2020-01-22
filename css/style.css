@@ -1,0 +1,102 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.slid_container{
+    margin: 10px auto;
+    width: 800px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slid_container img{
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 1;
+    width: 100%;
+}
+
+.slid_container img.active{
+    opacity: 1;
+}
+
+.slid_container .slid_number{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 20px;
+    z-index: 2;
+    border-radius: 6px;
+}
+
+.slider_control{
+    width: 800px;
+    margin: auto;
+    z-index: 10 !important;
+}
+
+
+.slider_control .prev,
+.slider_control .next{
+    background-color: turquoise;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 5px;
+    user-select: none;
+    width: 20%;
+    overflow: hidden;
+}
+.slider_control .prev{
+    float: left;
+}
+
+.slider_control .next{
+    float: right;
+}
+
+.slider_control .prev.disable,
+.slider_control .next.disable{
+    background-color: teal;
+}
+
+.slider_control .indicators{
+    width: 60%;
+    float: left;
+}
+
+.slider_control .indicators ul{
+list-style: none;
+margin: 0;
+text-align: center;
+}
+
+.slider_control .indicators ul li{
+display: inline-block;
+background-color: rgb(194, 45, 45);
+color: #333;
+width: 24px;
+height: 24px;
+line-height: 24px;
+border-radius: 4px;
+cursor: pointer;
+margin: 5px;
+}
+
+.slider_control .indicators ul li.active{
+    background-color: royalblue;
+    color: slateblue;
+}
+
+.active{
+    opacity: 1;
+}
