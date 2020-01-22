@@ -1,91 +1,108 @@
-// Get Sliders in Var
+var sliderImages = Array.from(document.querySelectorAll('.slid_container img'));
 
-var imageSlider = Array.from(document.querySelectorAll('.slid_container img'));
+var slidCount = sliderImages.length;
 
+var currentSlide = 1;
 
-// get number of slid
-
-var slidCount = imageSlider.length;
-
-// set first shown img
-
-var firstIndex = 1;
-
-var numContainer = document.getElementById('slid_number');
-
-// previous and next
-
-var prevBtn = document.getElementById('prev');
-var nextBtn = document.getElementById('next');
-
-prevBtn.onclick = prevClick;
-nextBtn.onclick = nextClick;
+var slid_NumberIlement = document.getElementById('slid_number');
 
 
-var ulElement = document.createElement('ul');
-ulElement.setAttribute('id' , 'ulE');
+var prev = document.getElementById('left_btn');
+var next = document.getElementById('right_btn');
 
-// create list item equal to the imgs
-for (var i = 1 ; i<=slidCount ; i++)
+var items = document.querySelectorAll('#ul li');
+
+var ulItem = document.getElementById('ul');
+
+
+prev.onclick = prevClick;
+next.onclick = nextClick;
+
+function prevClick(){
+    if(prev.classList.contains('disabled')){
+        
+        
+    }
+    else{
+    currentSlide--;
+   checker();
+    }
+}
+
+function nextClick(){
+    
+    if(next.classList.contains('disabled')){
+        
+        
+    }
+    else{
+    currentSlide++;
+   checker();
+    }
+
+}
+
+items[currentSlide - 1].classList.add('active');
+
+checker();
+
+
+for(var i = 0 ; i<items.length ; i++){
+items[i].onclick = function(){
+currentSlide = parseInt(this.getAttribute('data-value'));
+    checker();
+}
+}
+function checker(){
+    
+    slid_NumberIlement.textContent = 'slide # ' + currentSlide + ' of ' + slidCount;
+    removeActive();
+    sliderImages[currentSlide - 1].classList.add('active');
+    items[currentSlide - 1].classList.add('active');
+    if(currentSlide == 1){
+        prev.classList.add('disabled');
+    }
+    
+    else {
+    prev.classList.remove('disabled');
+    }
+    
+    if(currentSlide == slidCount){
+        next.classList.add('disabled');
+    }
+    
+    else {
+    next.classList.remove('disabled');
+    }
+}
+
+
+function removeActive(){
+sliderImages.forEach(function(slide)
 {
-    var liIems = document.createElement('li');
-    liIems.setAttribute('data-value' , i);
-    liIems.appendChild(document.createTextNode(i));
-    ulElement.appendChild(liIems);
-}
-
-document.getElementById('indicators').appendChild(ulElement);
-var items = Array.from(document.querySelectorAll('#ulE li'));
-
-// get the ul inprogress 
-var ulInfo = document.getElementById('ulE');
-if(firstIndex == 1){
-    prevBtn.classList.add('disable');
-}
-
-else{
-    prevBtn.classList.remove('disable');
-
-}
-
-if(firstIndex == slidCount - 1){
-    nextBtn.classList.add('disable');
-}
-
-else{
-    nextBtn.classList.remove('disable');
-
-}
-theChecker();
-
-
-function prevClick()
+slide.classList.remove('active');
+});
+    items.forEach(function(itemz)
 {
-    console.log('previous');
-}
-function nextClick()
-{
-    console.log('next');
+itemz.classList.remove('active');
+});
 }
 
 
-function theChecker()
-{
-
-    numContainer.textContent = 'slide # ' + firstIndex;
-    imageSlider[firstIndex - 1].classList.add('active');
-    ulInfo.children[firstIndex - 1].classList.add('active');
-    removeAllActive();
-
-}
-
-function removeAllActive(){
-    imageSlider.forEach(function(imgloop)
-    {
-        imgloop.classList.remove('active');
+var colored = document.querySelectorAll('#coloredUl li');
+for(var i = 0;i<colored.length;i++){
+    console.log(i);
+    console.log(colored[i]);
+    colored[i].addEventListener('click',function(){
+        next.classList.add(this.getAttribute('data-color'));
+        prev.classList.add(this.getAttribute('data-color'));
+        slid_NumberIlement.classList.add(this.getAttribute('data-color'));
+    
+        for(var x=0;x<items.length;x++)
+        {
+            items[x].classList.add(this.getAttribute('data-color'));
+        }
     });
-
-    items.forEach(function(itm){
-        itm.classList.remove('active');
-        });
 }
+
+

@@ -1,102 +1,145 @@
 *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+padding: 0;
+margin: 0
+}
+body{
 }
 
 .slid_container{
-    margin: 10px auto;
-    width: 800px;
-    height: 250px;
+    width: 1000px;
+    margin: auto;
+    height: 450px;
     position: relative;
+    background-color: red;
     overflow: hidden;
 }
 
 .slid_container img{
-    position: absolute;
-    opacity: 0;
-    transition: opacity 1s;
-    z-index: 1;
+    float: left;
     width: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0
 }
 
 .slid_container img.active{
-    opacity: 1;
+opacity: 1
 }
 
-.slid_container .slid_number{
+#slid_number{
     position: absolute;
-    left: 10px;
+    background-color: dodgerblue;
     top: 10px;
-    background-color: red;
-    color: white;
-    padding: 5px 10px;
-    font-size: 20px;
-    z-index: 2;
-    border-radius: 6px;
-}
-
-.slider_control{
-    width: 800px;
-    margin: auto;
-    z-index: 10 !important;
-}
-
-
-.slider_control .prev,
-.slider_control .next{
-    background-color: turquoise;
-    color: white;
+    margin-left: 22px;
+    padding: 10px;
     font-size: 16px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 5px;
-    user-select: none;
-    width: 20%;
+    font-family: monospace;
+    border-radius: 7px;
+    z-index: 2;
+    color: white;
+}
+
+
+.control_tools{
+    width: 1000px;
+    margin: auto
+}
+
+#ul{
+    list-style: none;
     overflow: hidden;
-}
-.slider_control .prev{
-    float: left;
+    text-align: center;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    padding: 13px;
+
 }
 
-.slider_control .next{
+#ul li{
+        width: 20px;
+        height: 20px;
+    background-color: red;
+    margin: 2px;
+    border-radius: 50%;
+        line-height: 40px;
+    cursor: pointer
+}
+#ul li.active
+{
+    background-color: dodgerblue
+}
+
+.btns #right_btn,.btns #left_btn{
     float: right;
-}
-
-.slider_control .prev.disable,
-.slider_control .next.disable{
-    background-color: teal;
-}
-
-.slider_control .indicators{
-    width: 60%;
-    float: left;
-}
-
-.slider_control .indicators ul{
-list-style: none;
-margin: 0;
+    background-color: dodgerblue;
+    font-size: 20px;
+    color: black;
+    width: 10%;
+    color: white;
+    padding: 4px 0;
+    text-transform: capitalize;
 text-align: center;
-}
-
-.slider_control .indicators ul li{
-display: inline-block;
-background-color: rgb(194, 45, 45);
-color: #333;
-width: 24px;
-height: 24px;
-line-height: 24px;
-border-radius: 4px;
 cursor: pointer;
-margin: 5px;
+}
+.btns #right_btn.disabled,.btns #left_btn.disabled
+{
+    background-color: rgb(26, 101, 175);;
+    cursor: no-drop
+}
+.btns #left_btn
+{
+float: left
 }
 
-.slider_control .indicators ul li.active{
-    background-color: royalblue;
-    color: slateblue;
+
+
+#coloredUl{
+
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    list-style: none;
 }
 
-.active{
-    opacity: 1;
+#coloredUl li{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    margin: 7px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#coloredUl li:nth-child(1){
+    background-color: dodgerblue;
+}
+#coloredUl li:nth-child(2){
+    background-color: rgb(130, 238, 148);
+
+}
+#coloredUl li:nth-child(3){
+    background-color: yellow;
+}
+#coloredUl li:nth-child(4){
+    background-color: turquoise;
+}
+
+
+.dodgerblue{
+background-color: dodgerblue !important;
+}
+.green{
+background-color: yellowgreen !important;
+
+}
+.blue{
+background-color: blue !important;
+
+}
+
+.turquoise{
+background-color: turquoise !important;
+
 }
